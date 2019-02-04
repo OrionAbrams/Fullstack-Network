@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Community = sequelize.define("Community", {
+  var Class = sequelize.define("Class", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,13 +41,10 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Community.associate = function(models) {
-    Community.belongsToMany(models.User, {
-      through: "UserCommunity",
-      as: "Communities",
-      foreignKey: "communityId",
-      otherKey: "userId"
-    });
+  Class.associate = function(models) {
+    Class.hasMany(models.User);
+    Class.hasMany(models.Lesson);
   };
-  return Community;
+
+  return Class;
 };

@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS pawstagram_db;
-CREATE DATABASE pawstagram_db;
-USE pawstagram_db;
+DROP DATABASE IF EXISTS fullstack_db;
+CREATE DATABASE fullstack_db;
+USE fullstack_db;

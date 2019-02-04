@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Fullstack
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="./assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+
+<body class="login-page sidebar-collapse">
+    <noscript>
+        You need to enable JavaScript to run this app.
+      </noscript>
+      <div id="root"></div>
+  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand font-pacifico" href="#"> <i class="fas fa-paw"></i>
+          Pawstagram </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">apps</i> About Us
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">layers</i> App Design
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">group</i> Meet the Devs
+              </a>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
+              <i class="material-icons">cloud_download</i> Download (iOS)
+            </a>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://github.com/sgenini/projectTwo" target="_blank" data-original-title="Check out our GitHub Repo">
+                <i class="fa fa-github-alt"></i> GitHub Repo
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header header-filter" data-parallax="false" style="background-image: url('./assets/img/bg4.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mx-auto">
+          <div class="card card-login login-card">
+            <form class="form login" method="" action="">
+              <div class="card-header card-header-primary text-center">
+                <h4 class="card-title font-lato remove-mb drop-shadow">Welcome to</h4>
+                <h3 class="font-pacifico drop-shadow">Pawstagram</h3>
+                  <!-- <div class="social-line mt-1 remove-mb">
+                    <a href="#pablo" class="btn btn-just-icon btn-link">
+                    <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link">
+                    <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link">
+                    <i class="fa fa-google-plus"></i>
+                    </a>
+                  </div> -->
+                </div>
+                  <p class="description text-center remove-mb" style="margin-top: 35px;">Pawstagram Account Login</p>
+                    <div class="card-body mt-3">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">mail</i>
+                          </span>
+                        </div>
+                          <input type="email" id="login-email-input" class="form-control" placeholder="Email Address...">
+                      </div>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                        </div>
+                        <input type="password" id="login-password-input" class="form-control" placeholder="Password...">
+                      </div>
+                    </div>
+                  <div class="footer text-center">
+                    <button type="submit" class="btn btn-primary btn-wd btn-lg">Login</button> <br>
+                    <a href="./signup-page.html" class="btn btn-primary btn-link btn-wd btn-sm">Not a user? Sign up!</a>
+                    <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-sm">Forgot password?</a>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="#">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="./signup-page.html">
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right font-roboto text-uppercase"><small class="font-white">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, Pawstagram.</small>
+          </div>
+        </div>
+      </footer>
+  </div>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mx-auto">
+          <div class="card card-login login-card">
+            <form class="form signup" method="" action="">
+              <div class="card-header card-header-primary text-center">
+                <h4 class="card-title font-lato remove-mb drop-shadow">Create account for</h4>
+                <h3 class="font-pacifico drop-shadow">Pawstagram</h3>
+                </div>
+                    <div class="card-body">
+                      <div class="input-group" style="margin-top: 35px;">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">face</i>
+                          </span>
+                        </div>
+                        <input id = "fullname-input" type="text" class="form-control" placeholder="Full Name...">
+                      </div>
+                      <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">mail</i>
+                          </span>
+                        </div>
+                          <input id = "signup-email-input" type="email" class="form-control" placeholder="Email Address...">
+                      </div>
+                      <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                        </div>
+                        <input id = "signup-password-input" type="password" class="form-control" placeholder="Password...">
+                      </div>
+                    </div>
+                  <div class="footer text-center">
+                    <button id = "signUpForm" class="btn btn-primary btn-wd btn-lg">Sign up</button> <br>
+                    <a href="./login-page.html" class="btn btn-primary btn-link btn-wd btn-sm">Have an account? Log in!</a>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+<script>
+  $(document).ready(function() {
+  // Getting references to our form and inputs
+  var loginForm = $("form.login");
+  var emailInput = $("input#login-email-input");
+  var passwordInput = $("input#login-password-input");
+
+  // When the form is submitted, we validate there's an email and password entered
+  loginForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
+  });
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    console.log(email, password)
+    $.post("/api/login", {
+      email: email,
+      password: password
+    }).then(function(sent) {
+      console.log(sent);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+});
+$(document).ready(function() {
+  // Getting references to our form and input
+  var signUpForm = $("form.signup");
+  var emailInput = $("input#signup-email-input");
+  var passwordInput = $("input#signup-password-input");
+  // var passwordConfirm = $("input#password-confirm");
+  var fullName = $("input#fullname-input");
+  // console.log(fullName.val())
+  // When the signup button is clicked, we validate the email and password are not blank
+  signUpForm.on("submit", function(event) {
+    event.preventDefault();
+    // if (passwordInput===passwordConfirm){
+      var userData = {
+        email: emailInput.val().trim(),
+        password: passwordInput.val().trim(),
+        name: fullName.val().trim()
+      };
+    // }
+    // else{
+      //if the passwords don't match, informs the user of such
+    //   notMatchingPassword();
+    // }
+      console.log(userData)
+    if (!userData.email || !userData.password || !userData.name) {
+      return;
+    }
+    // If we have an email and password, run the signUpUser function
+    signUpUser(userData.email, userData.password, userData.name);
+    emailInput.val("");
+    passwordInput.val("");
+    // passwordConfirm.val("");
+    fullName.val("");
+    
+    // Does a post to the signup route. If succesful, we are redirected to the members page
+    // Otherwise we log any errors
+    function signUpUser(email, password, name) {
+      $.post("/api/users", {
+        email: email,
+        password: password,
+        name: name
+      }).then(function(data) {
+        window.location.replace(data);
+        // If there's an error, handle it by throwing up a boostrap alert
+      }).catch(handleLoginErr);
+    }
+    
+    function handleLoginErr(err) {
+      $("#alert .msg").text(err.responseJSON);
+      $("#alert").fadeIn(500);
+    };
+    
+    // function notMatchingPassword() {
+      //   $("#alert .msg").text("Passwords do not match!");
+      //   $("#alert").fadeIn(500);
+      // }
+  });
+});
+
+  </script>
+</html>

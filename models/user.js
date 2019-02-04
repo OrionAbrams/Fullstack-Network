@@ -33,10 +33,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    communities: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     bio: {
       type: DataTypes.TEXT,
       allowNull: true
@@ -44,6 +40,15 @@ module.exports = function(sequelize, DataTypes) {
     location: {
       type: DataTypes.STRING,
       allownull: true
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allownull: true
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      allownull: false,
+      defaultValue: false
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -56,14 +61,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.Community, {
-      through: "UserCommunity",
-      as: "Communities",
-      foreignKey: "userId",
-      otherKey: "communityId"
-    });
-    User.hasMany(models.Pet, {
-      onDelete: "cascade"
+    User.belongsTo(models.Class, {
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 

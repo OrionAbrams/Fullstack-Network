@@ -1,34 +1,45 @@
+// *** Include Modules: npm (express, express-session, morgan), /routes, /models, passport
 const express = require("express");
-const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
-var session = require("express-session");
-// Requiring passport as we've configured it
-var passport = require("./config/passport");
+const session = require("express-session");
+const logger = require("morgan")
+const routes = require("./routes")
+const db = require("./models");
+const passport = require("./config/passport");
 
+// Set PORT to Heroku process.env.PORT (deployed) or 3001 (localhost)
+const PORT = process.env.PORT || 3001;
+
+// Initialize Express
+const app = express();
+
+// Configure middleware: morgan logger, URL-encoded & JSON body parser
+app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+const syncOptions = { force : false }
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   app.use(express.static("client/build"));
+  syncOptions.force = true
 }
 
+// Passport setup
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
-require("./routes/apiRoutes")(app);
+// *** Routes
+app.use(routes);
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync( syncOptions ).then(function() {
+  app.listen(PORT, function() {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
+  });
 });

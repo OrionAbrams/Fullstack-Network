@@ -1,24 +1,27 @@
-module.exports = function(sequelize, DataTypes) {
-  var PetPhoto = sequelize.define("PetPhoto", {
-    url: {
+module.exports = function (sequelize, DataTypes) {
+  var Lesson = sequelize.define("Lesson", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    lessonUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         isUrl: true
       }
     },
-    likes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    caption: {
-      type: DataTypes.STRING,
+    lessonInstruction: {
+      type: DataTypes.TEXT,
       allowNull: true,
       validate: {
         len: [1]
       }
     },
-    comments: {
+    test: {
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {
@@ -35,17 +38,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  PetPhoto.associate = function(models) {
-    PetPhoto.belongsTo(models.Pet, {
+  Lesson.associate = function (models) {
+    Lesson.belongsTo(models.Class, {
       foreignKey: {
         allowNull: false
-      },
-      onDelete: "cascade"
+      }
     });
-    PetPhoto.hasMany(models.PhotoPost, {
-      onDelete: "cascade"
-    });
-  };
-
-  return PetPhoto;
+  }
+  return Lesson;
 };
