@@ -97,7 +97,7 @@ class Profile extends React.Component {
   getData = () => {
     API.getUsers()
       .then((res) => {
-        // this.componentDidMount()
+        this.componentDidMount()
       })
       .catch(err => {
         console.log(err);
