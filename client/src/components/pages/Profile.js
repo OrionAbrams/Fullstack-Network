@@ -24,7 +24,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     let thisUserClass;
-    let currentProfile = parseInt(window.location.pathname.split("/").pop());
+    let currentProfile = this.props.match.params.id
     axios.get("/profile")
       .then(res => {
         this.setState({
@@ -97,7 +97,7 @@ class Profile extends React.Component {
   getData = () => {
     API.getUsers()
       .then((res) => {
-        this.componentDidMount()
+        // this.componentDidMount()
       })
       .catch(err => {
         console.log(err);

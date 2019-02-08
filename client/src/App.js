@@ -26,7 +26,8 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route path="/lessons" component={Lesson} />
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/profile" component={Profile} />
+        <Route path="/profile/:id" component={Profile} />
         <Route path="/addlesson" component={AddLesson} />
         <Route path="/chart" component={Chart} />
         <Route path="/chartreg" component={ChartReg} />
