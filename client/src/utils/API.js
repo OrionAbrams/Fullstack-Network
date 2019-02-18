@@ -23,6 +23,14 @@ export default {
   updateUser: function(userData) {
     return axios.put("/api/users/" + userData.id, userData);
   },
+  // Changes user to Admin
+  updateAdmin: function(userData) {
+    return axios.put("/api/users/updateadmin/" + userData.id, userData);
+  },
+  // Changes user to Student
+  updateStudent: function(userData) {
+    return axios.put("/api/users/updatestudent/" + userData.id, userData);
+  },
   // Saves lesson to the database
   saveLesson: function(userData) {
     return axios.post("/api/lessons", userData);

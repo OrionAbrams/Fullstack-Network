@@ -40,4 +40,10 @@ router.route("/users/:id")
   .put(usersController.update)
   .delete(usersController.delete);
 
+  router.route("/users/updateadmin/:id")
+  .put(usersController.updateAdmin)
+
+  router.route("/users/updatestudent/:id")
+  .put(usersController.updateStudent)
+
 module.exports = router;

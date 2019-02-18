@@ -67,7 +67,7 @@ class Profile extends React.Component {
                         <li>
                           <a target="_blank" rel="noopener noreferrer" href={res.data.Lessons[i].lessonUrl}>{res.data.Lessons[i].frontEndName}</a>
                           <button onClick={this.handleDeleteSubmit.bind(this, res.data.Lessons[i].id)} data-id={res.data.Lessons[i].id} className="btn btn-danger btn-sm text-white">
-                          ✗
+                            ✗
                           </button>
                         </li>)
                     } else {
@@ -93,7 +93,7 @@ class Profile extends React.Component {
     API.deleteLesson(id)
       .then(res => this.componentDidMount())
       .catch(err => console.log(err));
-  };  
+  };
   getData = () => {
     API.getUsers()
       .then((res) => {
@@ -131,14 +131,51 @@ class Profile extends React.Component {
         needMentor: 1
       },
     ).then((res) => {
-        this.setState({
-          needMentor: true
-        })
+      this.setState({
+        needMentor: true
+      })
     })
       .catch(err => {
         console.log(err);
       });
   };
+
+// Handles update to become admin
+handleBeAdmin = event => {
+  event.preventDefault();
+  API.updateAdmin(
+    {
+      id: this.state.id,
+      isAdmin: true
+    },
+  ).then((res) => {
+    this.setState({
+      isAdmin : true
+    })
+    this.forceUpdate()
+  })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+handleBeStudent = event => {
+  event.preventDefault();
+  API.updateStudent(
+    {
+      id: this.state.id,
+      isAdmin: false
+    },
+  ).then((res) => {
+    this.setState({
+      isAdmin : false
+    })
+    this.forceUpdate()
+  })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
   render() {
     return (
@@ -166,12 +203,12 @@ class Profile extends React.Component {
                       <ul>
                         {this.state.usersInClass[0].map(user => (
                           <li>
-                          <Link onClick={this.getData} to={"/profile/" + user.id}> {user.name} </Link>
+                            <Link onClick={this.getData} to={"/profile/" + user.id}> {user.name} </Link>
                           </li>
                         ))}
                       </ul>
                     ) : (
-                       null
+                        null
                       )}
                   </div>
                   : null}
@@ -187,27 +224,38 @@ class Profile extends React.Component {
               {this.state.isAdmin ? (
                 <MDBCol md="2">
                   <h5>Users Needing Mentor:</h5>
-                    {this.state.users.length ? (
-                      <ul>
-                        {this.state.users.map(user => (
-                          <li>{user.name}</li>
-                        ))}
-                      </ul>
-                    ) : (
+                  {this.state.users.length ? (
+                    <ul>
+                      {this.state.users.map(user => (
+                        <li>{user.name}</li>
+                      ))}
+                    </ul>
+                  ) : (
                       <h3>No current requests for mentor</h3>
                     )}
                 </MDBCol>
               ) : (
-                <MDBCol>
-                  {!this.state.needMentor ? (
-                    <MDBBtn onClick={this.handleGetMentor} className="peachy">
-                      Click for a mentor!
+                  <MDBCol>
+                    <div>
+                      {!this.state.needMentor ? (
+                        <MDBBtn onClick={this.handleGetMentor} className="peachy">
+                          Click for a mentor!
                     </MDBBtn>
-                  ) : (
-                    <h3>A mentor will be in contact soon</h3>
-                  )}
-                </MDBCol>
-              )}
+                      ) : (
+                          <h3>A mentor will be in contact soon</h3>
+                        )}
+                    </div>
+                  </MDBCol>
+                )}
+            </MDBRow>
+            <MDBRow>
+            <div>
+                      {this.state.isAdmin ? (
+                        <MDBBtn onClick={this.handleBeStudent} className="peachy">Become Student</MDBBtn>
+                      ) : (
+                          <MDBBtn onClick={this.handleBeAdmin} className="peachy">Become Admin</MDBBtn>
+                        )}
+                    </div>
             </MDBRow>
           </MDBContainer>
           <Footer />
