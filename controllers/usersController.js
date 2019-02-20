@@ -41,6 +41,36 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  updateAdmin: function(req, res) {
+    console.log(req.body);
+    db.User
+      .update(
+        {
+          isAdmin: req.body.isAdmin
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateStudent: function(req, res) {
+    console.log(req.body);
+    db.User
+      .update(
+        {
+          isAdmin: req.body.isAdmin
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   delete: function(req, res) {
     db.User
       .destroy({
