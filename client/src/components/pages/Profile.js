@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import API from "../../utils/API.js";
 
 let profileNum;
+let usersArray = [];
 
 class Profile extends React.Component {
 
@@ -19,10 +20,9 @@ class Profile extends React.Component {
     users: [],
     isAdmin: false,
     needMentor: false,
-    usersInClass: ""
+    usersInClass: usersArray
   };
-
-  componentDidMount() {
+  loadCurrentUser = () => {
     let thisUserClass;
     let currentProfile = this.props.match.params.id
     axios.get("/profile")
@@ -59,7 +59,6 @@ class Profile extends React.Component {
             axios.get("/profile/class/" + thisUserClass)
               .then(res => {
                 let lessonsArray = [];
-                let usersArray = [];
                 if (typeof res.data === 'object') {
                   for (let i = 0; i < res.data.Lessons.length; i++) {
                     if (this.state.isAdmin && !res.data.Lessons[i].original) {
@@ -78,14 +77,18 @@ class Profile extends React.Component {
                       )
                     }
                   }
-                  if (this.state.isAdmin) {
                     usersArray.push(res.data.Users)
-                  }
                 }
-                this.setState({ class: res.data.name, lessons: lessonsArray, usersInClass: usersArray })
+                this.setState({ class: res.data.name, lessons: lessonsArray})
+                if (this.state.isAdmin) {
+                  this.setState({ usersInClass: usersArray})
+                }
               })
             this.usersNeedMentor();
           }))
+  }
+  componentDidMount() {
+    this.loadCurrentUser()
   }
 
   // Deletes a lesson if it's not an original one
@@ -140,42 +143,42 @@ class Profile extends React.Component {
       });
   };
 
-// Handles update to become admin
-handleBeAdmin = event => {
-  event.preventDefault();
-  API.updateAdmin(
-    {
-      id: this.state.id,
-      isAdmin: true
-    },
-  ).then((res) => {
-    this.setState({
-      isAdmin : true
+  // Handles update to become admin
+  handleBeAdmin = event => {
+    event.preventDefault();
+    API.updateAdmin(
+      {
+        id: this.state.id,
+        isAdmin: true
+      },
+    ).then((res) => {
+      this.setState({
+        isAdmin: true
+      })
+      this.forceUpdate()
     })
-    this.forceUpdate()
-  })
-    .catch(err => {
-      console.log(err);
-    });
-};
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-handleBeStudent = event => {
-  event.preventDefault();
-  API.updateStudent(
-    {
-      id: this.state.id,
-      isAdmin: false
-    },
-  ).then((res) => {
-    this.setState({
-      isAdmin : false
+  handleBeStudent = event => {
+    event.preventDefault();
+    API.updateStudent(
+      {
+        id: this.state.id,
+        isAdmin: false
+      },
+    ).then((res) => {
+      this.setState({
+        isAdmin: false
+      })
+      this.forceUpdate()
     })
-    this.forceUpdate()
-  })
-    .catch(err => {
-      console.log(err);
-    });
-};
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -249,13 +252,13 @@ handleBeStudent = event => {
                 )}
             </MDBRow>
             <MDBRow>
-            <div>
-                      {this.state.isAdmin ? (
-                        <MDBBtn onClick={this.handleBeStudent} className="peachy">Become Student</MDBBtn>
-                      ) : (
-                          <MDBBtn onClick={this.handleBeAdmin} className="peachy">Become Admin</MDBBtn>
-                        )}
-                    </div>
+              <div>
+                {this.state.isAdmin ? (
+                  <MDBBtn onClick={this.handleBeStudent} className="peachy">Become Student</MDBBtn>
+                ) : (
+                    <MDBBtn onClick={this.handleBeAdmin} className="peachy">Become Admin</MDBBtn>
+                  )}
+              </div>
             </MDBRow>
           </MDBContainer>
           <Footer />
