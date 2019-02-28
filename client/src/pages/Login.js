@@ -1,11 +1,11 @@
 // *** Include Modules: npm (react, mdbreact), /utils
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import API from "../../utils/API";
-import { FormInput, FormBtn } from "../FormInput";
+import API from "../utils/API";
+import { FormInput, FormBtn } from "../components/FormInput";
 import "./style.css";
 import { Redirect } from "react-router-dom";
-import Footer from "../Footer";
+import Footer from "../components/Footer";
 
 class Login extends Component {
   state = {

@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
-import Home from "./components/pages/Home";
-import Lesson from "./components/pages/Lesson"
-import NoMatch from "./components/pages/NoMatch";
-import SignUp from "./components/pages/SignUp";
-import Login from "./components/pages/Login";
-import Logout from "./components/pages/Logout";
-import AddLesson from "./components/pages/AddLesson"
-import Profile from "./components/pages/Profile";
-import Chart from "./components/pages/Chart";
-import ChartReg from "./components/pages/ChartReg";
-import Contact from "./components/pages/Contact";
+import Home from "./pages/Home";
+import Lesson from "./pages/Lesson"
+import NoMatch from "./pages/NoMatch";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
+import AddLesson from "./pages/AddLesson"
+import Profile from "./pages/Profile";
+import Chart from "./components/Chart";
+import ChartReg from "./pages/ChartReg";
+import Contact from "./pages/Contact";
 
-import "./components/pages/style.css";
+import "./components/style.css";
 
 function App() {
   return (

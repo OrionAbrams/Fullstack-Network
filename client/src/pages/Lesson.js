@@ -1,7 +1,7 @@
 import React from "react";
 import Iframe from "react-iframe"
 import axios from "axios";
-import quotesArray from "../../assets/quotes/quotesArray"
+import quotesArray from "../assets/quotes/quotesArray"
 
 var randomNumber = Math.round(Math.random() * quotesArray.length);
 console.log(quotesArray[randomNumber])
