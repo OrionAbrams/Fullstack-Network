@@ -1,8 +1,8 @@
 import React from "react";
 // import Lesson from "./Lesson";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon } from "mdbreact";
-import ChartsPage from "../ChartsPage";
-import Footer from "../Footer";
+import ChartsPage from "../components/ChartsPage";
+import Footer from "../components/Footer";
 // import { img } from "./assets/images/dataFlow.png";
 
 function Home() {

@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
 import "./style.css";
-import Footer from "../Footer";
-import API from "../../utils/API.js";
+import Footer from "../components/Footer";
+import API from "../utils/API.js";
 
 let profileNum;
 let usersArray = [];

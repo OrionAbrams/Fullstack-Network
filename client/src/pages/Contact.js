@@ -1,7 +1,7 @@
 // import { React, Component } from "react";
 import { MDBBtn, MDBInput, MDBIcon, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import React from "react";
-import Footer from "../Footer";
+import Footer from "../components/Footer";
 
 
 function Contact() {

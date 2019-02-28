@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { MDBContainer} from "mdbreact";
 import "./style.css";
-import Footer from "../Footer";
+import Footer from "../components/Footer";
 
 class Logout extends React.Component {
 

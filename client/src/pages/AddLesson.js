@@ -1,7 +1,7 @@
 // *** Include Modules: npm (react, mdbreact), /utils
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import API from "../../utils/API.js";
+import API from "../utils/API.js";
 
 class AddLesson extends React.Component {
   state = {

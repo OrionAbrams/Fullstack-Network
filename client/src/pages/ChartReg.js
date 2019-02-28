@@ -4,7 +4,7 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { Pie } from "react-chartjs-2";
 //import API from "../../utils/API.js";
 import { Redirect } from "react-router-dom";
-import Footer from "../Footer";
+import Footer from "../components/Footer";
 
 
   class ChartReg extends React.Component {
@@ -49,19 +49,13 @@ setRedirect = () => {
       <div >
         <MDBContainer>
           <MDBRow>
-          </MDBRow>
-          <MDBRow>
-          <MDBCol md="2">
-          </MDBCol>
+            <MDBCol md="2">{/* Spacer */}</MDBCol>
             <MDBCol md="8">
-            
-        <h3 className="mt-5">Classes By Region</h3>
-        <Pie data={this.state.dataPie} options={{ responsive: true }} />     </MDBCol>
-            <MDBCol md="2">
-          </MDBCol> 
+              <h3 className="mt-5">Classes By Region</h3>
+              <Pie data={this.state.dataPie} options={{ responsive: true }} />
+            </MDBCol>
+            <MDBCol md="2">{/* Spacer */}</MDBCol> 
           </MDBRow>
-          <MDBRow>
-          </MDBRow> 
           <Footer />
         </MDBContainer>
       </div>
