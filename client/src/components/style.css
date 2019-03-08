@@ -52,6 +52,9 @@ p {
 .mt-40 {
   margin-top: 40px;
 }
+.nav-link {
+  color: #FFF;
+}
 
 /* ----------------------- Drop Down ----------------------- */
 .dropdown-submenu {
